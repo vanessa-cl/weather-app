@@ -1,15 +1,11 @@
 <script setup>
 // import { ref } from "vue";
 import WeatherSearchBar from "./WeatherSearchBar.vue";
-import WeatherTodayForecast from "./WeatherTodayForecast.vue";
-import WeatherNextDaysForecast from "./WeatherNextDaysForecast.vue";
 </script>
 
 <template>
   <main class="weather-wrapper">
     <WeatherSearchBar></WeatherSearchBar>
-    <WeatherTodayForecast></WeatherTodayForecast>
-    <WeatherNextDaysForecast></WeatherNextDaysForecast>
   </main>
 </template>
 
