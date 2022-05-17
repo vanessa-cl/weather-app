@@ -1,12 +1,18 @@
 <script setup>
+import { icons } from "../utils/utils.js";
 import "../assets/icons/weather-icons.css";
+defineProps({
+  weatherDescription: String,
+  date: String,
+  temp: Number,
+});
 </script>
 
 <template>
   <div class="weather-day-wrapper">
-    <h3>M</h3>
-    <i class="wi wi-night-sleet"></i>
-    <p>26°C</p>
+    <h3>{{ date }}</h3>
+    <i v-bind:class="[icons[weatherDescription]]"></i>
+    <p>{{ parseInt(temp) }}°C</p>
   </div>
 </template>
 

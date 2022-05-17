@@ -1,8 +1,9 @@
 <script setup>
+import { icons } from "../utils/utils.js";
 import "../assets/icons/weather-icons.css";
-import { convertKelvinToCelsius } from "../utils/utils.js";
 defineProps({
   cityName: String,
+  weatherDescription: String,
   temp: Number,
   tempMin: Number,
   tempMax: Number,
@@ -17,22 +18,19 @@ defineProps({
     <div v-if="cityName.length > 0" class="weather-today-area">
       <div class="weather-lateral-info">
         <p class="weather-lateral-text">Humidity</p>
-        <i class="wi wi-night-sleet"></i>
+        <i class="wi wi-humidity"></i>
         <p>{{ humidity }}%</p>
       </div>
       <div class="weather-central-info">
         <h2>{{ cityName }}</h2>
-        <i class="wi wi-night-sleet"></i>
-        <p>{{ convertKelvinToCelsius(temp) }}°C</p>
+        <i v-bind:class="[icons[weatherDescription]]"></i>
+        <p>{{ parseInt(temp) }}°C</p>
         <p>Min/Max</p>
-        <p>
-          {{ convertKelvinToCelsius(tempMin) }}°C/
-          {{ convertKelvinToCelsius(tempMax) }}°C
-        </p>
+        <p>{{ parseInt(tempMin) }}°C/ {{ parseInt(tempMax) }}°C</p>
       </div>
       <div class="weather-lateral-info">
         <p class="weather-lateral-text">Wind</p>
-        <i class="wi wi-night-sleet"></i>
+        <i class="wi wi-windy"></i>
         <p>{{ windSpeed }}m/s</p>
       </div>
     </div>
@@ -51,7 +49,7 @@ defineProps({
 .weather-today-area {
   display: flex;
   width: 18rem;
-  height: 12rem;
+  height: 13rem;
   background-color: aqua;
   border-radius: 5%;
 }
