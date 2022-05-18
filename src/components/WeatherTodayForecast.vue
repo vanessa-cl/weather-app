@@ -13,67 +13,97 @@ defineProps({
 </script>
 
 <template>
-  <section class="weather-today-wrapper">
-    <h1>Today</h1>
-    <div v-if="cityName.length > 0" class="weather-today-area">
-      <div class="weather-lateral-info">
-        <p class="weather-lateral-text">Humidity</p>
-        <i class="wi wi-humidity"></i>
-        <p>{{ humidity }}%</p>
-      </div>
-      <div class="weather-central-info">
-        <h2>{{ cityName }}</h2>
-        <i v-bind:class="[icons[weatherDescription]]"></i>
+  <h3>Today</h3>
+  <div class="weather-today-container">
+    <section v-if="cityName.length > 0" class="weather-today-area">
+      <div class="weather-current-temp">
+        <h3>{{ cityName }}</h3>
+        <i class="main-icon" v-bind:class="[icons[weatherDescription]]"></i>
         <p>{{ parseInt(temp) }}°C</p>
+      </div>
+      <div class="weather-max-min">
         <p>Min/Max</p>
         <p>{{ parseInt(tempMin) }}°C/ {{ parseInt(tempMax) }}°C</p>
       </div>
-      <div class="weather-lateral-info">
-        <p class="weather-lateral-text">Wind</p>
-        <i class="wi wi-windy"></i>
-        <p>{{ windSpeed }}m/s</p>
+      <div class="weather-info-wrapper">
+        <div>
+          <p>Wind</p>
+          <div class="weather-current-info">
+            <i class="wi wi-windy side-icon"></i>
+            <p>{{ windSpeed }}m/s</p>
+          </div>
+        </div>
+        <div>
+          <p>Humidity</p>
+          <div class="weather-current-info">
+            <i class="wi wi-humidity side-icon"></i>
+            <p>{{ humidity }}%</p>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
     <p v-else>No data</p>
-  </section>
+  </div>
 </template>
 
 <style>
-.weather-today-wrapper {
+.weather-today-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+h3 {
+  margin: 0.5rem 1rem;
 }
 
 .weather-today-area {
-  display: flex;
-  width: 18rem;
-  height: 13rem;
-  background-color: aqua;
-  border-radius: 5%;
-}
-
-.weather-lateral-info {
   display: grid;
-  width: 4rem;
-  height: 4rem;
-  margin: 2rem 1rem;
-  align-items: center;
-  grid-template-rows: 32px 32px;
-  grid-template-columns: 32px 32px;
-}
-
-.weather-lateral-text {
-  text-align: center;
-  grid-row: 1;
-  grid-column: 1 / span 2;
-}
-
-.weather-central-info {
-  display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 18rem;
+  height: 13rem;
+  background-color: #5f85a7;
+  border-radius: 5%;
+  box-shadow: 3px 3px var(--gray);
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.weather-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 4rem;
+  height: 100%;
+  align-items: center;
+  grid-row: 1 / span 2;
+  grid-column: 2;
+}
+
+.weather-current-temp {
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 1.2rem;
+}
+
+.weather-max-min {
+  display: flex;
+  flex-direction: column;
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.weather-current-info {
+  display: flex;
+  width: 2rem;
+}
+
+.main-icon {
+  font-size: 2rem;
+}
+
+.side-icon {
+  font-size: 1.5rem;
 }
 </style>

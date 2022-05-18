@@ -1,5 +1,4 @@
 <script setup>
-// import { ref } from "vue";
 import WeatherSearchBar from "./WeatherSearchBar.vue";
 </script>
 
@@ -9,13 +8,16 @@ import WeatherSearchBar from "./WeatherSearchBar.vue";
   </main>
 </template>
 
-<style>
+<style scoped>
 .weather-wrapper {
   display: flex;
   flex-direction: column;
   width: 20rem;
-  height: 30rem;
-  background-color: #004346;
+  height: 31rem;
+  background-color: #91abc1;
   border-radius: 5%;
+  border: 1px solid var(--white);
+  box-shadow: 3px 3px var(--gray);
+  justify-content: center;
 }
 </style>

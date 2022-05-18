@@ -7,7 +7,7 @@ defineProps({
 
 <template>
   <section>
-    <h2>Next Days</h2>
+    <h3>Next Days</h3>
     <div class="weather-next-days-wrapper">
       <WeatherDayForecast
         v-for="dailyForecast in dailyForecasts"

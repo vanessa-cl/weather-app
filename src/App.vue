@@ -14,13 +14,13 @@ export default defineComponent({
   </body>
 </template>
 
-<style>
+<style scoped>
 body {
-  background-color: #74b3ce;
+  background-image: linear-gradient(90deg, #6489a9, #9db1c3);
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
-  z-index: 2;
-  position: relative;
+  align-items: center;
 }
 </style>
