@@ -17,23 +17,23 @@ defineProps({
   <div class="weather-today-container">
     <section v-if="cityName.length > 0" class="weather-today-area">
       <div class="weather-current-temp">
-        <h3>{{ cityName }}</h3>
+        <h4>{{ cityName }}</h4>
         <i class="main-icon" v-bind:class="[icons[weatherDescription]]"></i>
         <p>{{ parseInt(temp) }}°C</p>
       </div>
       <div class="weather-max-min">
-        <p>Min/Max</p>
-        <p>{{ parseInt(tempMin) }}°C/ {{ parseInt(tempMax) }}°C</p>
+        <h5>Min / Max</h5>
+        <p>{{ parseInt(tempMin) }}°C / {{ parseInt(tempMax) }}°C</p>
       </div>
       <div class="weather-info-wrapper">
-        <div>
+        <div class="weather-info-wrapper">
           <p>Wind</p>
           <div class="weather-current-info">
             <i class="wi wi-windy side-icon"></i>
             <p>{{ windSpeed }}m/s</p>
           </div>
         </div>
-        <div>
+        <div class="weather-info-wrapper">
           <p>Humidity</p>
           <div class="weather-current-info">
             <i class="wi wi-humidity side-icon"></i>
@@ -47,11 +47,16 @@ defineProps({
 </template>
 
 <style>
-.weather-today-container {
+.weather-today-container,
+.weather-info-wrapper,
+.weather-max-min,
+.weather-current-temp {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: var(--white);
+  text-shadow: 2px 2px var(--gray-dark);
 }
 
 h3 {
@@ -64,6 +69,7 @@ h3 {
   align-items: center;
   width: 18rem;
   height: 13rem;
+  padding: 1rem;
   background-color: #5f85a7;
   border-radius: 5%;
   box-shadow: 3px 3px var(--gray);
@@ -72,11 +78,8 @@ h3 {
 }
 
 .weather-info-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 4rem;
+  width: 8rem;
   height: 100%;
-  align-items: center;
   grid-row: 1 / span 2;
   grid-column: 2;
 }
@@ -88,15 +91,14 @@ h3 {
 }
 
 .weather-max-min {
-  display: flex;
-  flex-direction: column;
   grid-row: 2;
   grid-column: 1;
 }
 
 .weather-current-info {
   display: flex;
-  width: 2rem;
+  justify-content: space-evenly;
+  width: 5rem;
 }
 
 .main-icon {

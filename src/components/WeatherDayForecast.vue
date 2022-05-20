@@ -10,7 +10,7 @@ defineProps({
 
 <template>
   <div class="weather-day-wrapper">
-    <h5>{{ date }}</h5>
+    <p>{{ date }}</p>
     <i class="side-icon" v-bind:class="[icons[weatherDescription]]"></i>
     <p>{{ parseInt(temp) }}°C</p>
   </div>
@@ -24,16 +24,17 @@ defineProps({
   align-items: center;
   width: 4rem;
   height: 7rem;
-  background-color: #f1f0f0;
-  padding: 0.2rem;
+  background-color: #326a8c;
+  padding: 0.3rem;
   border-radius: 10%;
   box-shadow: 3px 3px var(--gray);
   font-size: 1.2rem;
   margin: 0.5rem;
+  color: var(--light);
+  text-shadow: 2px 2px var(--gray-dark);
 }
 
 p {
   margin: 0;
-  font-weight: bolder;
 }
 </style>
