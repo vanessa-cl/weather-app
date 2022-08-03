@@ -107,8 +107,8 @@ const saveNextDaysWeatherData = computed({
 
 .search-bar-wrapper {
   width: 40%;
-  border-radius: 20px;
-  box-shadow: 2px 2px var(--gray);
+  border-radius: 15px;
+  box-shadow: 4px 4px 4px rgba(9, 58, 62, 0.25);
   justify-content: space-between;
   padding: 0 1rem;
 }
@@ -123,6 +123,7 @@ const saveNextDaysWeatherData = computed({
   font-size: 1.4rem;
   color: var(--white);
   font-weight: 600;
+  text-shadow: 2px 2px 2px var(--dark);
 }
 
 .search-bar:focus {
