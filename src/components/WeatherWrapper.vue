@@ -3,7 +3,7 @@ import WeatherSearchBar from "./WeatherSearchBar.vue";
 </script>
 
 <template>
-  <main class="weather-wrapper">
+  <main class="main-wrapper">
     <WeatherSearchBar></WeatherSearchBar>
   </main>
 </template>
@@ -19,5 +19,13 @@ import WeatherSearchBar from "./WeatherSearchBar.vue";
   border: 1px solid var(--white);
   box-shadow: 3px 3px var(--gray);
   justify-content: center;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 </style>

@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import WeatherWrapper from "./components/WeatherWrapper.vue";
+import "./styles/GlobalStyles.css";
 
 export default defineComponent({
   name: "App",
@@ -14,9 +15,9 @@ export default defineComponent({
   </body>
 </template>
 
-<style scoped>
+<style>
 body {
-  background-image: linear-gradient(90deg, #6489a9, #9db1c3);
+  background-color: var(--background-blue);
   height: 100vh;
   width: 100vw;
   display: flex;

@@ -73,12 +73,13 @@ const saveNextDaysWeatherData = computed({
       <input
         type="text"
         class="search-bar"
-        placeholder="Search city"
+        placeholder="Search city..."
         v-model="city"
-        @input="searchCity(city)"
+        v-on:keyup.enter="searchCity(city)"
+        v-on:blur="searchCity(city)"
       />
       <button class="search-btn" v-on:click="searchCity(city)">
-        <img src="https://img.icons8.com/ios-glyphs/30/000000/search--v1.png" />
+        <img src="../assets/svg/Research.svg" v-on:click="searchCity(city)" />
       </button>
     </div>
   </div>
@@ -94,30 +95,36 @@ const saveNextDaysWeatherData = computed({
 .search-bar-area,
 .search-bar-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 2rem;
+  height: 2.5rem;
+  transition: height 5s;
 }
 
 .search-bar-area {
   width: 100%;
+  justify-content: center;
 }
 
 .search-bar-wrapper {
-  width: 80%;
+  width: 40%;
   border-radius: 20px;
   box-shadow: 2px 2px var(--gray);
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .search-bar-wrapper,
 .search-bar {
-  background-color: #326a8c;
+  background-color: var(--primary-color);
 }
 
 .search-bar {
   border: none;
+  font-size: 1.4rem;
   color: var(--white);
+  font-weight: 600;
 }
+
 .search-bar:focus {
   outline: none;
 }
@@ -125,5 +132,10 @@ const saveNextDaysWeatherData = computed({
 .search-btn {
   background-color: transparent;
   border: none;
+}
+
+img {
+  height: 35px;
+  width: 35px;
 }
 </style>
