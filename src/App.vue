@@ -23,5 +23,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: var(--font-family-sans-serif) !important;
+  line-height: 24px !important;
 }
 </style>

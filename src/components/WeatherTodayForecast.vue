@@ -1,6 +1,6 @@
 <script setup>
-import { icons } from "../utils/utils.js";
-import "../assets/icons/weather-icons.css";
+// import { icons } from "../utils/utils.js";
+// import "../assets/icons/weather-icons.css";
 defineProps({
   cityName: String,
   weatherDescription: String,
@@ -13,33 +13,34 @@ defineProps({
 </script>
 
 <template>
-  <h3>Today</h3>
   <div class="weather-today-container">
+    <div class="current-city">
+      <h4>{{ cityName }}</h4>
+      <p class="date-text">9pm, January 12th</p>
+    </div>
     <section v-if="cityName.length > 0" class="weather-today-area">
-      <div class="weather-current-temp">
-        <h4>{{ cityName }}</h4>
-        <i class="main-icon" v-bind:class="[icons[weatherDescription]]"></i>
-        <p>{{ parseInt(temp) }}°C</p>
-      </div>
-      <div class="weather-max-min">
-        <h5>Min / Max</h5>
-        <p>{{ parseInt(tempMin) }}°C / {{ parseInt(tempMax) }}°C</p>
-      </div>
-      <div class="weather-info-wrapper">
+      <div class="main-forecast">
         <div class="weather-info-wrapper">
-          <p>Wind</p>
-          <div class="weather-current-info">
-            <i class="wi wi-windy side-icon"></i>
-            <p>{{ windSpeed }}m/s</p>
+          <div class="forecast-data">
+            <img class="side-icon" src="../assets/svg/windy.svg" />
+            <p>Wind</p>
           </div>
+          <p>{{ windSpeed }}m/s</p>
+        </div>
+        <div class="weather-current-temp">
+          <img class="main-icon" src="../assets/svg/Cloudy_Weather.svg" />
+          <p class="current-temp">{{ parseInt(temp) }}°C</p>
         </div>
         <div class="weather-info-wrapper">
-          <p>Humidity</p>
-          <div class="weather-current-info">
-            <i class="wi wi-humidity side-icon"></i>
-            <p>{{ humidity }}%</p>
+          <div class="forecast-data">
+            <img class="side-icon" src="../assets/svg/hum.svg" />
+            <p>Hum</p>
           </div>
+          <p>{{ humidity }}%</p>
         </div>
+      </div>
+      <div class="forecast-desc">
+        <p>Cloudy Weather</p>
       </div>
     </section>
     <p v-else>No data</p>
@@ -47,6 +48,7 @@ defineProps({
 </template>
 
 <style>
+.current-city,
 .weather-today-container,
 .weather-info-wrapper,
 .weather-max-min,
@@ -56,43 +58,96 @@ defineProps({
   justify-content: center;
   align-items: center;
   color: var(--white);
-  text-shadow: 2px 2px var(--gray-dark);
+  /* text-shadow: 2px 2px var(--gray-dark); */
 }
 
-h3 {
-  margin: 0.5rem 1rem;
+.forecast-data {
+  display: inline-flex;
+}
+
+.forecast-data p {
+  font-weight: 600;
+}
+
+.weather-info-wrapper p {
+  font-weight: 600;
+}
+
+.main-forecast {
+  display: flex;
+  height: 6.5rem;
+}
+
+.main-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.current-city {
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.current-temp {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  margin-bottom: 0.1rem;
+}
+
+.date-text {
+  font-weight: 300;
+}
+
+.forecast-desc {
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+p {
+  margin: 0;
+}
+
+.weather-today-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
 }
 
 .weather-today-area {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 18rem;
-  height: 13rem;
-  padding: 1rem;
-  background-color: #5f85a7;
-  border-radius: 5%;
-  box-shadow: 3px 3px var(--gray);
-  grid-template-columns: 1.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  width: 100%;
+  height: 8.5rem;
+  background: linear-gradient(180deg,
+      rgba(255, 223, 130, 0.7) 0%,
+      #5fa8d3 100%);
+  border-radius: 20px;
+  border: 1px solid var(--white);
+  /* box-shadow: 3px 3px var(--gray); */
 }
 
 .weather-info-wrapper {
-  width: 8rem;
-  height: 100%;
-  grid-row: 1 / span 2;
-  grid-column: 2;
+  width: 7rem;
+  height: 4rem;
 }
 
 .weather-current-temp {
-  grid-row: 1;
-  grid-column: 1;
-  font-size: 1.2rem;
-}
-
-.weather-max-min {
-  grid-row: 2;
-  grid-column: 1;
+  height: 8rem;
+  bottom: 22%;
+  position: relative;
 }
 
 .weather-current-info {
@@ -101,11 +156,9 @@ h3 {
   width: 5rem;
 }
 
-.main-icon {
-  font-size: 2rem;
-}
-
 .side-icon {
-  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
 }
 </style>

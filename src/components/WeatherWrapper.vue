@@ -12,7 +12,7 @@ import WeatherSearchBar from "./WeatherSearchBar.vue";
 .weather-wrapper {
   display: flex;
   flex-direction: column;
-  width: 20rem;
+  width: 22rem;
   height: 31rem;
   background-color: #91abc1;
   border-radius: 5%;

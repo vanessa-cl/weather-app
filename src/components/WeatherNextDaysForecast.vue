@@ -6,14 +6,14 @@ defineProps({
 </script>
 
 <template>
-  <h3>Next Days</h3>
   <section class="weather-next-days-wrapper">
+    <h3>Next Days</h3>
     <div class="weather-next-days-area">
       <WeatherDayForecast
         v-for="dailyForecast in dailyForecasts"
         v-bind:key="dailyForecast.id"
         v-bind:weatherDescription="dailyForecast.weatherDescription"
-        v-bind:date="dailyForecast.date"
+        v-bind:time="dailyForecast.time"
         v-bind:temp="dailyForecast.temp"
       >
       </WeatherDayForecast>
@@ -24,6 +24,7 @@ defineProps({
 <style>
 .weather-next-days-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
 }
@@ -31,6 +32,9 @@ defineProps({
 .weather-next-days-area {
   display: flex;
   justify-content: center;
-  width: 18rem;
+}
+
+h3 {
+  margin-bottom: 1rem !important;
 }
 </style>

@@ -26,26 +26,62 @@ export const MOCK_CURRENT_WEATHER = {
 export const MOCK_DAILY_FORECAST = [
   {
     id: 1,
-    date: "17/05",
-    weatherDescription: "Clouds",
-    temp: 31.93,
+    time: "10:00",
+    weather: [
+      {
+        main: "Clouds",
+      },
+    ],
+    main: {
+      temp: 31.93,
+    },
   },
   {
     id: 2,
-    date: "18/05",
-    weatherDescription: "Clouds",
-    temp: 14.18,
+    time: "11:00",
+    weather: [
+      {
+        main: "Clouds",
+      },
+    ],
+    main: {
+      temp: 31.93,
+    },
   },
   {
     id: 3,
-    date: "19/05",
-    weatherDescription: "Rain",
-    temp: 12.59,
+    time: "12:00",
+    weather: [
+      {
+        main: "Clouds",
+      },
+    ],
+    main: {
+      temp: 31.93,
+    },
   },
   {
     id: 4,
-    date: "20/05",
-    weatherDescription: "Clouds",
-    temp: 14.19,
+    time: "00:00",
+    weather: [
+      {
+        main: "Clouds",
+      },
+    ],
+    main: {
+      temp: 31.93,
+    },
+  },
+  {
+    id: 5,
+    time: "01:00",
+    weather: [
+      {
+        main: "Clouds",
+      },
+    ],
+    main: {
+      temp: 31.93,
+    },
   },
 ];

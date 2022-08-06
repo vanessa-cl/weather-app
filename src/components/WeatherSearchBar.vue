@@ -6,7 +6,7 @@ import {
   getCurrentWeatherByCity,
   getNextDaysWeatherByCity,
 } from "../services/api.js";
-import { formatDate } from "../utils/utils.js";
+import { formatDate, MOCK_DAILY_FORECAST } from "../utils/utils.js";
 
 let currentData;
 let nextDaysData;
@@ -21,6 +21,7 @@ const currentForecast = ref({
   windSpeed: 0,
 });
 const dailyForecasts = ref([]);
+let showResults = ref(false);
 
 const searchCity = async (city) => {
   if (city.length >= 3) {
@@ -40,10 +41,19 @@ const searchCity = async (city) => {
     for (let i = 8; i < forecastArray.length; i += 8) {
       auxArray.push(forecastArray[i]);
     }
-    saveNextDaysWeatherData.value = auxArray;
+    saveNextDaysWeatherData.value = MOCK_DAILY_FORECAST;
   } else {
     saveCurrentWeatherData.value = {};
     saveNextDaysWeatherData.value = [];
+  }
+  toggleForecast();
+};
+
+const toggleForecast = () => {
+  if (dailyForecasts.value.length > 0) {
+    showResults.value = true;
+  } else {
+    showResults.value = false;
   }
 };
 
@@ -58,7 +68,8 @@ const saveNextDaysWeatherData = computed({
     return (dailyForecasts.value = newValues.map((item, index) => {
       return {
         id: index + 1,
-        date: formatDate(item.dt_txt),
+        // date: formatDate(item.dt_txt),
+        time: item.time,
         weatherDescription: item.weather[0].main,
         temp: item.main.temp,
       };
@@ -68,8 +79,11 @@ const saveNextDaysWeatherData = computed({
 </script>
 
 <template>
-  <div class="search-bar-area">
-    <div class="search-bar-wrapper">
+  <div class="main" v-bind:class="{ 'forecast-wrapper': showResults }">
+    <div
+      class="search-bar-wrapper"
+      v-bind:class="{ 'show-forecast': showResults }"
+    >
       <input
         type="text"
         class="search-bar"
@@ -79,38 +93,54 @@ const saveNextDaysWeatherData = computed({
         v-on:blur="searchCity(city)"
       />
       <button class="search-btn" v-on:click="searchCity(city)">
-        <img src="../assets/svg/Research.svg" v-on:click="searchCity(city)" />
+        <img src="../assets/svg/Research.svg" />
       </button>
     </div>
-  </div>
-  <div v-if="dailyForecasts.length > 0">
-    <WeatherTodayForecast v-bind="currentForecast"></WeatherTodayForecast>
-    <WeatherNextDaysForecast
-      v-bind:dailyForecasts="dailyForecasts"
-    ></WeatherNextDaysForecast>
+    <div class="forecast-area" v-if="dailyForecasts.length > 0">
+      <WeatherTodayForecast v-bind="currentForecast"></WeatherTodayForecast>
+      <WeatherNextDaysForecast
+        v-bind:dailyForecasts="dailyForecasts"
+      ></WeatherNextDaysForecast>
+    </div>
   </div>
 </template>
 
 <style>
-.search-bar-area,
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.forecast-wrapper {
+  height: 31rem;
+  border-radius: 15px;
+  width: 20.5rem;
+  background-color: var(--primary-color);
+  padding: 1.5rem;
+}
+
+.forecast-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 18.5rem;
+  height: 25rem;
+}
+
 .search-bar-wrapper {
   display: flex;
   align-items: center;
-  height: 2.5rem;
-  transition: height 5s;
-}
-
-.search-bar-area {
-  width: 100%;
-  justify-content: center;
-}
-
-.search-bar-wrapper {
+  height: 2.2rem;
   width: 40%;
   border-radius: 15px;
-  box-shadow: 4px 4px 4px rgba(9, 58, 62, 0.25);
+  /* box-shadow: 4px 4px 4px rgba(9, 58, 62, 0.25); */
   justify-content: space-between;
   padding: 0 1rem;
+  border: 1px solid var(--white);
 }
 
 .search-bar-wrapper,
@@ -119,15 +149,24 @@ const saveNextDaysWeatherData = computed({
 }
 
 .search-bar {
+  width: 100%;
   border: none;
-  font-size: 1.4rem;
   color: var(--white);
+  font-size: 1.2rem;
   font-weight: 600;
-  text-shadow: 2px 2px 2px var(--dark);
+  /* text-shadow: 2px 2px 2px var(--dark); */
+}
+
+.search-bar::placeholder {
+  color: var(--white);
 }
 
 .search-bar:focus {
   outline: none;
+}
+
+.search-bar-wrapper:focus-within {
+  outline: 2px auto blue;
 }
 
 .search-btn {
@@ -136,7 +175,12 @@ const saveNextDaysWeatherData = computed({
 }
 
 img {
-  height: 35px;
-  width: 35px;
+  height: 2rem;
+  width: 2rem;
+}
+
+.show-forecast {
+  width: 18rem;
+  /* transition: width 2s; */
 }
 </style>
