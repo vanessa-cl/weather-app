@@ -14,13 +14,21 @@ export const formatDate = (time) => {
 };
 
 export const MOCK_CURRENT_WEATHER = {
-  cityName: "London",
-  humidity: 53,
-  temp: 19.81,
-  tempMax: 22.06,
-  tempMin: 15.81,
-  weatherDescription: "Clouds",
-  windSpeed: 3.6,
+  name: "London",
+  weather: [
+    {
+      main: "Clouds",
+    },
+  ],
+  main: {
+    temp: 19.81,
+    temp_max: 22.06,
+    temp_min: 15.81,
+    humidity: 53,
+  },
+  wind: {
+    speed: 3.6,
+  },
 };
 
 export const MOCK_DAILY_FORECAST = [

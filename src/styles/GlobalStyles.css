@@ -7,9 +7,17 @@
   font-style: normal;
 }
 
-h3 {
+h4 {
   color: var(--white);
   font-weight: 600;
   letter-spacing: 0.05rem;
   margin-bottom: 0.1rem;
+}
+
+p {
+  margin: 0;
+}
+
+div {
+  color: var(--white);
 }

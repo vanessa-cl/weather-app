@@ -1,0 +1,37 @@
+.hourly-data-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 3rem;
+  height: 7rem;
+  background-color: transparent;
+  padding: 0.5rem 0.2rem;
+  border-radius: 20px;
+  border: 1px solid var(--white);
+  /* box-shadow: 3px 3px var(--gray); */
+  font-size: 1.2rem;
+  margin-right: 0.8rem;
+  color: var(--light);
+}
+
+.hourly-data-wrapper:nth-child(5) {
+  margin-right: 0;
+}
+
+.hour, .temp {
+  font-weight: 600;
+}
+
+.hour {
+  font-size: 0.9rem;
+}
+
+.temp {
+  font-size: 1rem;
+}
+
+.next-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}

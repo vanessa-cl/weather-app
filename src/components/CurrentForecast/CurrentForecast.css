@@ -1,0 +1,87 @@
+.current-city,
+.current-forecast-area,
+.current-forecast-wrapper,
+.current-weather-data,
+.current-weather-temp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-forecast-area {
+  width: 100%;
+  height: auto;
+}
+
+.current-city {
+  height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.current-city p {
+  font-weight: 300;
+}
+
+.current-forecast-wrapper {
+  width: 100%;
+  height: 8.5rem;
+  background: linear-gradient(180deg,
+      rgba(255, 223, 130, 0.7) 0%,
+      #5fa8d3 100%);
+  border-radius: 20px;
+  border: 1px solid var(--white);
+  /* box-shadow: 3px 3px var(--gray); */
+}
+
+.main-forecast {
+  display: flex;
+  height: 6.5rem;
+}
+
+.main-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
+.side-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.current-weather-temp {
+  height: 8rem;
+  bottom: 22%;
+  position: relative;
+}
+
+.current-weather-temp p {
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.current-data {
+  display: inline-flex;
+}
+
+.current-data p {
+  font-weight: 600;
+}
+
+.current-weather-data p {
+  font-weight: 600;
+}
+
+.current-weather-desc {
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.current-weather-data {
+  width: 7rem;
+  height: 4rem;
+}

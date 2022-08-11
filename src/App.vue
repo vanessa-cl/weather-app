@@ -1,17 +1,19 @@
 <script>
 import { defineComponent } from "@vue/runtime-core";
-import WeatherWrapper from "./components/WeatherWrapper.vue";
+import SearchBar from "./components/SearchBar/SearchBar.vue";
 import "./styles/GlobalStyles.css";
 
 export default defineComponent({
   name: "App",
-  components: { WeatherWrapper },
+  components: { SearchBar },
 });
 </script>
 
 <template>
   <body>
-    <WeatherWrapper></WeatherWrapper>
+    <main class="main-wrapper">
+      <SearchBar></SearchBar>
+    </main>
   </body>
 </template>
 
@@ -25,5 +27,13 @@ body {
   align-items: center;
   font-family: var(--font-family-sans-serif) !important;
   line-height: 24px !important;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 }
 </style>
